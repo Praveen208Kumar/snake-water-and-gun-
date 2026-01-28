@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Water Gun Game</title>
+</head>
+<body>
+<h2>Snake🐍 Water💦 Gun🔫 Game</h2>
+<button onclick="playGame()">Play Game</button>
+<script>
+let userscore = 0;
+let compscore = 0;
+let maxscore = 10;
+function playGame() {
+  if (userscore >= maxscore || compscore >= maxscore) {
+    alert("Game Over!\nRestart the page to play again ");
+    return;
+  }
+  let user = prompt("Enter your choice: snake, water, or gun");
+  if(user === null) return; 
+  user = user.toLowerCase();
+  let choices = ["snake", "water", "gun"];
+  let computer = choices[Math.floor(Math.random() * 3)];
+  if (!choices.includes(user)) {
+    alert("Invalid input \nChoose only: snake, water, gun");
+    return;
+  }
+  let result = "";
+  if (user == computer) {
+    result = "Draw 🤬 (No points)";
+  }
+  else if (
+    (user == "snake" && computer == "water") ||
+    (user == "water" && computer == "gun") ||
+    (user == "gun" && computer == "snake")
+  ) {
+    result = "You Win 😂 (+1 point)";
+    userscore++;
+  } 
+  else {
+    result = "Computer Wins 😰 (+1 point)";
+    compscore++;
+  }
+  alert(
+    "Your Choice: " + user +
+    "\nComputer Choice: " + computer +
+    "\nResult: " + result +
+    "\n\nScore:\nYou: " + userscore + " | Computer: " + compscore
+  );
+  if (userscore == maxscore || compscore == maxscore) {
+    let finalResult = "";
+
+    if (userScore == maxScore) {
+      finalResult = " YOU WON THE GAME! 🏆🏆🏆🏆🏆";
+    } else {
+      finalResult = " COMPUTER WON THE GAME 🍫🍫🍫";
+    }
+    alert(
+      " FINAL RESULT 🏁\n\n" +
+      finalResult +
+      "\n\nFinal Score:\nYou: " + userscore + " | Computer: " + compscore
+    );
+  }
+}
+</script>
+
+</body>
+</html>
